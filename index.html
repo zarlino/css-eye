@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,8 @@
     <meta name="keywords" content="CSS, Chrome Extension, Web Development, CSS Inspector, Developer Tools">
     <meta name="author" content="CSS Eye">
     <title>CSS Eye - Professional CSS Inspector for Chrome</title>
-    <link rel="stylesheet" href="styles/minimal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="icons/icon128.png">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -23,162 +23,391 @@
     <meta name="twitter:title" content="CSS Eye - Professional CSS Inspector">
     <meta name="twitter:description" content="The Ultimate CSS Inspection Tool for Chrome. Analyze, copy and modify CSS from any website in just a few clicks.">
     <meta name="twitter:image" content="https://your-github-username.github.io/css-eye/images/social-preview.png">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #1557b0;
+            --text: #202124;
+            --text-light: #5f6368;
+            --background: #ffffff;
+            --border: #dadce0;
+            --success: #188038;
+            --success-dark: #146c2e;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: #f9f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--background);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 20px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: var(--primary-dark);
+        }
+        .price-badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        .video-section {
+            padding: 80px 0;
+            background: var(--background);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+        }
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .features {
+            padding: 80px 0;
+            background: #f9f9fa;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .privacy-section {
+            padding: 80px 0;
+            background: var(--background);
+        }
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .privacy-content h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .privacy-content p {
+            margin-bottom: 20px;
+        }
+        .privacy-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        footer {
+            background: #202124;
+            color: white;
+            padding: 40px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .footer-column a {
+            display: block;
+            color: #dadce0;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #9aa0a6;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="language-selector">
-        <select id="language" onchange="changeLanguage()" title="Change language">
-            <option value="en" selected>English</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-            <option value="de">Deutsch</option>
-            <option value="ja">日本語</option>
-            <option value="zh">中文</option>
-        </select>
-    </div>
-
-    <header class="hero">
-        <nav class="navbar">
-            <div class="logo">
-                <img src="icons/icon128.png" alt="CSS Eye Logo" class="logo-img">
-                <span>CSS Eye</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-            </div>
-            <div class="cta-buttons">
-                <div class="region-selector">
-                    <select id="region" onchange="updatePrice()" title="Choose region">
-                        <option value="us" selected>United States ($9.99)</option>
-                        <option value="eu">Europe (9,99€)</option>
-                        <option value="gb">United Kingdom (£8.99)</option>
-                        <option value="jp">Japan (¥1100)</option>
-                        <option value="au">Australia ($13.99 AUD)</option>
-                    </select>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="icons/icon128.png" alt="CSS Eye Logo">
+                    <span class="logo-text">CSS Eye</span>
                 </div>
-                <a href="https://chrome.google.com/webstore/detail/css-eye/your-extension-id" class="btn btn-primary" id="buy-button" target="_blank" rel="noopener">Buy Now ($9.99)</a>
-            </div>
-        </nav>
-        <div class="hero-content">
-            <h1>The Ultimate CSS Inspection Tool</h1>
-            <p class="hero-subtitle">Analyze, copy and modify CSS from any website in just a few clicks</p>
-            <div class="hero-cta">
-                <a href="https://chrome.google.com/webstore/detail/css-eye/your-extension-id" class="btn btn-primary btn-large" id="buy-button-hero" target="_blank" rel="noopener">Buy Now</a>
-            </div>
-            <div class="worldwide-info">
-                <i class="fas fa-globe"></i>
-                <span>Available worldwide on the Chrome Web Store</span>
-            </div>
+                <div class="nav-links">
+                    <a href="#video">Demo</a>
+                    <a href="#features">Features</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+            </nav>
         </div>
     </header>
 
+    <section class="hero">
+        <div class="container">
+            <h1>The Ultimate CSS Inspection Tool</h1>
+            <p>Transform your CSS workflow with smart measurements, real-time analysis, and AI-powered suggestions</p>
+            <a href="https://chrome.google.com/webstore/detail/your-extension-id" class="cta-button" target="_blank" rel="noopener">
+                Add to Chrome <span class="price-badge">9€</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="video" class="video-section">
+        <div class="container">
+            <h2 class="section-title">See CSS Eye in Action</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <!-- Option 1: YouTube Video -->
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+                    
+                    <!-- Option 2: Self-hosted Video (uncomment to use) -->
+                    <!--
+                    <video controls poster="images/video-thumbnail.jpg">
+                        <source src="videos/demo.mp4" type="video/mp4">
+                        <source src="videos/demo.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="features" class="features">
-        <h2>Advanced Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-eye"></i>
-                <h3>Real-time Inspection</h3>
-                <p>Instantly view CSS styles of any element</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-copy"></i>
-                <h3>Smart Copy</h3>
-                <p>Copy styles with a single click or keyboard shortcut</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Visual Editor</h3>
-                <p>Modify styles directly in the interface</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-code"></i>
-                <h3>Advanced Export</h3>
-                <p>Export your styles in different formats</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="worldwide-banner">
-        <div class="worldwide-content">
-            <h2>Available Worldwide</h2>
-            <div class="region-grid">
-                <div class="region-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3>Americas</h3>
-                    <p>USD $9.99</p>
+        <div class="container">
+            <h2 class="section-title">Advanced Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Smart Measurement System</h3>
+                    <p>Precise pixel measurements with smart guides and real-time distance calculations</p>
                 </div>
-                <div class="region-item">
-                    <i class="fas fa-globe-europe"></i>
-                    <h3>Europe</h3>
-                    <p>EUR 9,99€</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Live CSS Analysis</h3>
+                    <p>Instant property inspection and real-time style suggestions</p>
                 </div>
-                <div class="region-item">
-                    <i class="fas fa-globe-asia"></i>
-                    <h3>Asia</h3>
-                    <p>¥1100 / ₩12000</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Visual Editor</h3>
+                    <p>Intuitive point-and-click interface with dark mode support</p>
                 </div>
-                <div class="region-item">
-                    <i class="fas fa-globe-africa"></i>
-                    <h3>Other Regions</h3>
-                    <p>Locally adjusted pricing</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3>Simple Pricing</h3>
+                    <p>One-time payment of 9€. No subscriptions, free updates included.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>CSS Eye</h4>
-                <p>The professional CSS inspection tool</p>
-                <div class="store-badge">
-                    <a href="https://chrome.google.com/webstore/detail/css-eye/your-extension-id" class="chrome-store-button" target="_blank" rel="noopener">
-                        <img src="images/chrome-store-badge.png" alt="Available in the Chrome Web Store">
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#features">Features</a>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Use</a>
-                <div class="payment-methods">
-                    <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
-                    <i class="fab fa-cc-paypal"></i>
-                </div>
+    <section id="privacy" class="privacy-section">
+        <div class="container">
+            <h2 class="section-title">Privacy Policy</h2>
+            <div class="privacy-content">
+                <h2>CSS Eye Privacy Policy</h2>
+                <p>Last updated: January 1, 2024</p>
+                
+                <p>Your privacy is important to us. This Privacy Policy explains how CSS Eye ("we", "our", or "us") collects, uses, and protects your information when you use our Chrome extension.</p>
+                
+                <h3>Information Collection</h3>
+                <p>CSS Eye does not collect any personal information. The extension works entirely locally within your browser.</p>
+                
+                <h3>Data Usage</h3>
+                <p>CSS Eye only processes CSS and HTML data from the websites you visit for the purpose of analyzing and displaying CSS properties. This data is:</p>
+                <ul>
+                    <li>Processed entirely within your browser</li>
+                    <li>Never transmitted to our servers or any third parties</li>
+                    <li>Not stored permanently beyond the current browsing session</li>
+                </ul>
+                
+                <h3>Permissions</h3>
+                <p>CSS Eye requires the following permissions:</p>
+                <ul>
+                    <li>Access to website content (to analyze CSS)</li>
+                    <li>Storage (to save your preferences)</li>
+                </ul>
+                
+                <h3>Changes to This Policy</h3>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+                
+                <h3>Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at support@css-eye.com</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 CSS Eye. All rights reserved.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CSS Eye</h3>
+                    <a href="#video">Demo</a>
+                    <a href="#features">Features</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <a href="https://github.com/your-repo" target="_blank" rel="noopener">GitHub Repository</a>
+                    <a href="https://chrome.google.com/webstore/detail/your-extension-id" target="_blank" rel="noopener">Chrome Web Store</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a href="mailto:support@css-eye.com">support@css-eye.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CSS Eye. All rights reserved.</p>
+            </div>
         </div>
     </footer>
-
-    <script>
-        function updatePrice() {
-            const region = document.getElementById('region').value;
-            const buyButton = document.getElementById('buy-button');
-            const buyButtonHero = document.getElementById('buy-button-hero');
-            const prices = {
-                'us': '$9.99',
-                'eu': '9,99€',
-                'gb': '£8.99',
-                'jp': '¥1100',
-                'au': '$13.99 AUD'
-            };
-            const price = prices[region];
-            buyButton.textContent = `Buy Now (${price})`;
-            buyButtonHero.textContent = `Buy Now (${price})`;
-        }
-
-        function changeLanguage() {
-            const lang = document.getElementById('language').value;
-            if (lang === 'en') return;
-            window.location.href = `${lang}/index.html`;
-        }
-    </script>
 
     <!-- Google Analytics or your preferred analytics tool -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
