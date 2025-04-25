@@ -1,0 +1,563 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --background: #1a1a2e;
+    --surface: #202040;
+    --primary: #3a86ff;
+    --text-primary: #ffffff;
+    --text-secondary: #c5c5c5;
+    --success: #4caf50;
+}
+
+body {
+    width: 300px;
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    padding: 16px;
+}
+
+.popup-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--surface);
+    border-radius: 8px;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.status-message {
+    padding: 8px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 4px;
+    background-color: var(--surface);
+    color: var(--success);
+}
+
+.shortcuts {
+    background-color: var(--surface);
+    border-radius: 8px;
+    padding: 12px;
+    display: grid;
+    gap: 8px;
+}
+
+.shortcut-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+kbd {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+.preprocessor-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 12px;
+    background-color: var(--surface);
+    border-radius: 8px;
+}
+
+.preprocessor-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 12px;
+}
+
+.preprocessor-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.preprocessor-btn.active {
+    background-color: var(--primary);
+}
+
+/* Sections d'analyse */
+.cssreveal-ai-analysis,
+.cssreveal-performance-section,
+.cssreveal-compatibility-section {
+    margin-top: 16px;
+    padding: 12px;
+    background: var(--cssreveal-bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cssreveal-ai-header,
+.cssreveal-section-header {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cssreveal-text-primary);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--cssreveal-border);
+}
+
+.cssreveal-ai-category {
+    margin-bottom: 12px;
+}
+
+.cssreveal-ai-category-header {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--cssreveal-text-secondary);
+    margin-bottom: 8px;
+}
+
+.cssreveal-ai-suggestion,
+.cssreveal-metric {
+    display: flex;
+    align-items: flex-start;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    background: var(--cssreveal-bg-primary);
+    animation: cssreveal-suggestion-show 0.3s ease-out forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+@keyframes cssreveal-suggestion-show {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cssreveal-ai-suggestion.error,
+.cssreveal-metric.error {
+    background: var(--cssreveal-error-bg);
+    border-left: 3px solid var(--cssreveal-error);
+}
+
+.cssreveal-ai-suggestion.warning,
+.cssreveal-metric.warning {
+    background: var(--cssreveal-warning-bg);
+    border-left: 3px solid var(--cssreveal-warning);
+}
+
+.cssreveal-ai-suggestion.info,
+.cssreveal-metric.info {
+    background: var(--cssreveal-info-bg);
+    border-left: 3px solid var(--cssreveal-info);
+}
+
+.cssreveal-metric-icon {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.cssreveal-metric-content {
+    flex: 1;
+}
+
+.cssreveal-metric-title {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.cssreveal-metric-details {
+    font-size: 12px;
+    color: var(--cssreveal-text-secondary);
+    margin-bottom: 4px;
+}
+
+.cssreveal-metric-suggestion {
+    font-size: 12px;
+    color: var(--cssreveal-text-primary);
+    padding: 4px 8px;
+    background: var(--cssreveal-bg-secondary);
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.cssreveal-export-report {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    margin-top: 16px;
+    background: var(--cssreveal-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cssreveal-export-report:hover {
+    background: var(--cssreveal-primary-dark);
+}
+
+.cssreveal-export-report:active {
+    transform: translateY(1px);
+}
+
+/* Tooltip styles */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 10px;
+    background: var(--cssreveal-tooltip-bg);
+    color: var(--cssreveal-tooltip-text);
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+}
+
+[data-tooltip]:hover:before {
+    opacity: 1;
+}
+
+/* Ajout d'une transition fluide pour les boutons */
+button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #007BFF; /* Couleur bleue moderne pour le hover */
+    transform: scale(1.05); /* Légère mise en avant au survol */
+}
+
+/* Style premium pour les boutons */
+button {
+    background: linear-gradient(90deg, #007BFF, #0056b3); /* Dégradé moderne */
+    color: white; /* Texte blanc pour le contraste */
+    border: none; /* Suppression des bordures */
+    border-radius: 6px; /* Bordures arrondies pour un look premium */
+    padding: 10px 20px; /* Espacement interne */
+    font-size: 16px; /* Taille de texte adaptée */
+    font-weight: 500; /* Texte légèrement en gras */
+    cursor: pointer; /* Curseur pointeur pour indiquer l'interaction */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0056b3, #003f7f); /* Dégradé plus foncé au survol */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+    transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+button:active {
+    transform: translateY(1px); /* Effet d'enfoncement lors du clic */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Ombre réduite lors du clic */
+}
+
+/* Ajout d'une transition fluide pour les liens */
+a {
+    transition: color 0.3s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+    color: #0056b3; /* Couleur bleue plus foncée pour le hover */
+    text-decoration: underline;
+}
+
+/* Ajout d'un style moderne pour les conteneurs principaux */
+.container {
+    padding: 16px;
+    background-color: #ffffff; /* Fond blanc pour un look propre */
+    border-radius: 8px; /* Bordures arrondies */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+    transform: translateY(-4px); /* Légère élévation au survol */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+}
+
+/* Ajout d'une typographie moderne et professionnelle */
+body {
+    font-family: 'Roboto', Arial, sans-serif; /* Police moderne et professionnelle */
+    font-size: 16px; /* Taille de texte par défaut */
+    line-height: 1.6; /* Espacement pour une meilleure lisibilité */
+    color: #333; /* Couleur de texte neutre et professionnelle */
+    background-color: #f9f9f9; /* Fond clair et moderne */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 700; /* Texte en gras pour les titres */
+    color: #222; /* Couleur légèrement plus foncée pour les titres */
+    margin-bottom: 16px;
+}
+
+p {
+    margin-bottom: 16px; /* Espacement entre les paragraphes */
+}
+
+/* Ajout d'un style pour les petits textes */
+small {
+    font-size: 14px;
+    color: #666; /* Couleur plus claire pour les petits textes */
+}
+
+/* Style moderne pour les en-têtes */
+header {
+    background: linear-gradient(90deg, #0056b3, #007BFF); /* Dégradé professionnel */
+    color: white; /* Texte blanc pour le contraste */
+    padding: 16px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0; /* Bordures arrondies en haut */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+header .icon {
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 24px; /* Taille de l'icône */
+}
+
+/* Thème sombre professionnel */
+body {
+    background-color: #1e1e2f; /* Fond sombre professionnel */
+    color: #e0e0e0; /* Texte clair pour le contraste */
+}
+
+.container {
+    background-color: #2a2a3b; /* Fond des conteneurs sombre et élégant */
+    border: 1px solid #3a3a4f; /* Bordure subtile pour délimiter les sections */
+}
+
+header {
+    background: linear-gradient(90deg, #3a3a4f, #4a4a6f); /* Dégradé sombre pour l'en-tête */
+    color: #ffffff; /* Texte blanc pour le contraste */
+}
+
+button {
+    background: linear-gradient(90deg, #4a4a6f, #5a5a8f); /* Dégradé sombre pour les boutons */
+    color: #ffffff; /* Texte blanc */
+    border: 1px solid #3a3a4f; /* Bordure subtile */
+}
+
+button:hover {
+    background: linear-gradient(90deg, #5a5a8f, #6a6a9f); /* Dégradé plus clair au survol */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre plus marquée au survol */
+}
+
+/* Style des liens dans le thème sombre */
+a {
+    color: #6a6a9f; /* Couleur des liens dans le thème sombre */
+}
+
+a:hover {
+    color: #8a8abf; /* Couleur plus claire au survol */
+}
+
+/* Styles pour les boutons de technologies */
+.tech-buttons-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 16px;
+    background-color: var(--bg-dark);
+}
+
+.tech-button {
+    padding: 8px 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    background-color: var(--bg-medium);
+    color: var(--text-primary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tech-button:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.tech-button.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-bright);
+    font-weight: 500;
+}
+
+/* Animation de transition */
+.tech-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.tech-button:active::after {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+/* Styles pour la barre de progression */
+.progress-container {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.progress {
+    height: 20px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Styles pour les messages d'erreur et d'avertissement */
+.scan-error, .scan-warning {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.scan-error {
+    background-color: #ffebee;
+    border: 1px solid #ffcdd2;
+    color: #c62828;
+}
+
+.scan-warning {
+    background-color: #fff3e0;
+    border: 1px solid #ffe0b2;
+    color: #ef6c00;
+}
+
+.error-message, .warning-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Animation de chargement */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.progress-bar.scanning {
+    animation: pulse 1.5s infinite;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSS Eye - The Ultimate CSS Inspection Tool for Chrome. Analyze, copy and modify CSS from any website in just a few clicks.">
+    <meta name="keywords" content="CSS, Chrome Extension, Web Development, CSS Inspector, Developer Tools">
+    <meta name="author" content="CSS Eye">
+    <title>CSS Eye - Professional CSS Inspector for Chrome</title>
+    <link rel="stylesheet" href="styles/minimal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icons/icon128.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-github-username.github.io/css-eye/">
+    <meta property="og:title" content="CSS Eye - Professional CSS Inspector">
+    <meta property="og:description" content="The Ultimate CSS Inspection Tool for Chrome. Analyze, copy and modify CSS from any website in just a few clicks.">
+    <meta property="og:image" content="https://your-github-username.github.io/css-eye/images/social-preview.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://your-github-username.github.io/css-eye/">
+    <meta name="twitter:title" content="CSS Eye - Professional CSS Inspector">
+    <meta name="twitter:description" content="The Ultimate CSS Inspection Tool for Chrome. Analyze, copy and modify CSS from any website in just a few clicks.">
+    <meta name="twitter:image" content="https://your-github-username.github.io/css-eye/images/social-preview.png">
+</head>
+<body>
+    <div class="language-selector">
+        <select id="language" onchange="changeLanguage()" title="Change language">
+            <option value="en" selected>English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+        </select>
+    </div>
+
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="icons/icon128.png" alt="CSS Eye Logo" class="logo-img">
+                <span>CSS Eye</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+            </div>
+            <div class="cta-buttons">
+                <div class="region-selector">
+                    <select id="region" onchange="updatePrice()" title="Choose region">
+                        <option value="us" selected>United States ($9.99)</option>
+                        <option value="eu">Europe (9,99€)</option>
+                        <option value="gb">United Kingdom (£8.99)</option>
+                        <option value="jp">Japan (¥1100)</option>
+                        <option value="au">Australia ($13.99 AUD)</option>
+                    </select>
+                </div>
+                <a href="https://chrome.google.com/webstore/detail/css-eye/your-extension-id" class="btn btn-primary" id="buy-button" target="_blank" rel="noopener">Buy Now ($9.99)</a>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h1>The Ultimate CSS Inspection Tool</h1>
+            <p class="hero-subtitle">Analyze, copy and modify CSS from any website in just a few clicks</p>
+            <div class="hero-cta">
+                <a href="https://chrome.google.com/webstore/detail/css-eye/your-extension-id" class="btn btn-primary btn-large" id="buy-button-hero" target="_blank" rel="noopener">Buy Now</a>
+            </div>
+            <div class="worldwide-info">
+                <i class="fas fa-globe"></i>
+                <span>Available worldwide on the Chrome Web Store</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <h2>Advanced Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-eye"></i>
+                <h3>Real-time Inspection</h3>
+                <p>Instantly view CSS styles of any element</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-copy"></i>
+                <h3>Smart Copy</h3>
+                <p>Copy styles with a single click or keyboard shortcut</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Visual Editor</h3>
+                <p>Modify styles directly in the interface</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-code"></i>
+                <h3>Advanced Export</h3>
+                <p>Export your styles in different formats</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="worldwide-banner">
+        <div class="worldwide-content">
+            <h2>Available Worldwide</h2>
+            <div class="region-grid">
+                <div class="region-item">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Americas</h3>
+                    <p>USD $9.99</p>
+                </div>
+                <div class="region-item">
+                    <i class="fas fa-globe-europe"></i>
+                    <h3>Europe</h3>
+                    <p>EUR 9,99€</p>
+                </div>
+                <div class="region-item">
+                    <i class="fas fa-globe-asia"></i>
+                    <h3>Asia</h3>
+                    <p>¥1100 / ₩12000</p>
+                </div>
+                <div class="region-item">
+                    <i class="fas fa-globe-africa"></i>
+                    <h3>Other Regions</h3>
+                    <p>Locally adjusted pricing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>CSS Eye</h4>
+                <p>The professional CSS inspection tool</p>
+                <div class="store-badge">
+                    <a href="https://chrome.google.com/webstore/detail/css-eye/your-extension-id" class="chrome-store-button" target="_blank" rel="noopener">
+                        <img src="images/chrome-store-badge.png" alt="Available in the Chrome Web Store">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#features">Features</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CSS Eye. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function updatePrice() {
+            const region = document.getElementById('region').value;
+            const buyButton = document.getElementById('buy-button');
+            const buyButtonHero = document.getElementById('buy-button-hero');
+            const prices = {
+                'us': '$9.99',
+                'eu': '9,99€',
+                'gb': '£8.99',
+                'jp': '¥1100',
+                'au': '$13.99 AUD'
+            };
+            const price = prices[region];
+            buyButton.textContent = `Buy Now (${price})`;
+            buyButtonHero.textContent = `Buy Now (${price})`;
+        }
+
+        function changeLanguage() {
+            const lang = document.getElementById('language').value;
+            if (lang === 'en') return;
+            window.location.href = `${lang}/index.html`;
+        }
+    </script>
+
+    <!-- Google Analytics or your preferred analytics tool -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR-GA-ID');
+    </script>
+</body>
+</html>
