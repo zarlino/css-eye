@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Eye - Purchase License</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .purchase-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 20px 0;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 5px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .features {
+            margin: 25px 0;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 8px;
+        }
+        .feature {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 17px;
+        }
+        .feature:before {
+            content: "✓";
+            color: #4CAF50;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .divider {
+            margin: 25px 0;
+            text-align: center; 
+            color: #666;
+            position: relative;
+        }
+        .divider:before, .divider:after {
+            content: "";
+            display: inline-block;
+            width: 40%;
+            height: 1px;
+            background: #ddd;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+        #paypal-button-container {
+            margin-top: 15px;
+            min-height: 40px;
+        }
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .payment-logo {
+            height: 35px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .payment-option {
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .payment-option:hover {
+            border-color: #4CAF50;
+            background-color: #fafffe;
+        }
+        h1, h2, h3 {
+            color: #2e7d32;
+        }
+    </style>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR"></script>
+</head>
+<body>
+    <h1>Purchase CSS Eye License</h1>
+    
+    <div class="purchase-container">
+        <h2>Complete License</h2>
+        <div class="price">9€</div>
+        
+        <div class="features">
+            <div class="feature">Unlimited access to all features</div>
+            <div class="feature">Free updates</div>
+            <div class="feature">Priority support</div>
+            <div class="feature">Lifetime license</div>
+        </div>
+        
+        <h3>Payment Options</h3>
+        
+        <div class="payment-methods">
+            <div class="payment-option">
+                <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo" class="payment-logo" />
+                <div id="paypal-button-container"></div>
+            </div>
+            
+            <div class="divider">or</div>
+            
+            <div class="payment-option">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe Logo" class="payment-logo" />
+                <button id="checkout-button" class="button">Pay with Card</button>
+            </div>
+        </div>
+        
+        <p style="margin-top: 25px; font-size: 0.9em; color: #666; text-align: center;">
+            After purchase, you will receive your license key by email.
+            This key will allow you to activate CSS Eye on all your devices.
+        </p>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #fff3cd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <h3 style="color: #856404;">Money-back guarantee</h3>
+        <p>
+            If CSS Eye doesn't meet your expectations, we'll refund you in full within 30 days of your purchase.
+            No questions asked.
+        </p>
+    </div>
+
+    <script>
+        // Initialiser Stripe
+        const stripe = Stripe('pk_live_51RKFPRCVuyICKZ5QV51F7E1mIiB2GysBXKY8hzIzbaJ9RPIz7jgQz90FwBzactWhAQDO13lo0qNGM283tAT2Evbl00rSfyhCA5');
+        const checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function() {
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1RLLDcCVuyICKZ5QMHrD0XXR',
+                    quantity: 1
+                }],
+                mode: 'payment',
+                successUrl: 'https://zarlino.github.io/css-eye/thank-you.html',
+                cancelUrl: 'https://zarlino.github.io/css-eye/purchase.html'
+            });
+        });
+
+        // Initialiser PayPal
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color:  'blue',
+                shape:  'rect',
+                label:  'pay'
+            },
+            fundingSource: paypal.FUNDING.PAYPAL,
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '9.00',
+                            currency_code: 'EUR'
+                        },
+                        description: 'CSS Eye License'
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    window.location.href = 'https://zarlino.github.io/css-eye/thank-you.html';
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html> 
