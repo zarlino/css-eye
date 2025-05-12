@@ -1,212 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Eye - Purchase License</title>
+    <title>CSS Eye Pro - Buy Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            background-color: #f5f7ff;
             color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .purchase-container {
+
+        .container {
+            width: 400px;
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .price {
-            font-size: 32px;
-            font-weight: bold;
-            color: #4CAF50;
-            margin: 20px 0;
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(76, 175, 80, 0.1);
-            border-radius: 5px;
-        }
-        .button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-        }
-        .button:hover {
-            background-color: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .features {
-            margin: 25px 0;
-            padding: 15px;
-            background: #f8f8f8;
             border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .feature {
-            margin: 15px 0;
-            padding-left: 30px;
-            position: relative;
-            font-size: 17px;
+
+        .currency-select {
+            width: 100px;
+            margin: 0 auto;
+            display: block;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
         }
-        .feature:before {
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #4285f4;
+            text-align: center;
+            margin: 20px 0 10px;
+        }
+
+        .lifetime {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            margin: 20px 0;
+        }
+
+        .features li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li::before {
             content: "✓";
             color: #4CAF50;
-            position: absolute;
-            left: 0;
+            margin-right: 10px;
             font-weight: bold;
-            font-size: 20px;
         }
-        .divider {
-            margin: 25px 0;
-            text-align: center; 
-            color: #666;
-            position: relative;
-        }
-        .divider:before, .divider:after {
-            content: "";
-            display: inline-block;
-            width: 40%;
-            height: 1px;
-            background: #ddd;
-            margin: 0 10px;
-            vertical-align: middle;
-        }
-        #paypal-button-container {
-            margin-top: 15px;
-            min-height: 40px;
-        }
-        .payment-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        .payment-logo {
-            height: 35px;
-            margin-bottom: 10px;
+
+        .payment-button {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
         }
-        .payment-option {
-            padding: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+
+        .payment-button:hover {
+            opacity: 0.9;
         }
-        .payment-option:hover {
-            border-color: #4CAF50;
-            background-color: #fafffe;
+
+        .stripe-button {
+            background: white;
+            color: #635bff;
+            border: 1px solid #635bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        h1, h2, h3 {
-            color: #2e7d32;
+
+        .stripe-button img {
+            height: 20px;
+        }
+
+        .paypal-button {
+            background: #ffc439;
+            color: #003087;
+            font-weight: bold;
+        }
+
+        .guarantee {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .guarantee-text {
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        #paypal-button-container {
+            margin: 10px 0;
         }
     </style>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR"></script>
 </head>
 <body>
-    <h1>Purchase CSS Eye License</h1>
-    
-    <div class="purchase-container">
-        <h2>Complete License</h2>
-        <div class="price">9€</div>
-        
-        <div class="features">
-            <div class="feature">Unlimited access to all features</div>
-            <div class="feature">Free updates</div>
-            <div class="feature">Priority support</div>
-            <div class="feature">Lifetime license</div>
-        </div>
-        
-        <h3>Payment Options</h3>
-        
-        <div class="payment-methods">
-            <div class="payment-option">
-                <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo" class="payment-logo" />
-                <div id="paypal-button-container"></div>
-            </div>
-            
-            <div class="divider">or</div>
-            
-            <div class="payment-option">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe Logo" class="payment-logo" />
-                <button id="checkout-button" class="button">Pay with Card</button>
-            </div>
-        </div>
-        
-        <p style="margin-top: 25px; font-size: 0.9em; color: #666; text-align: center;">
-            After purchase, you will receive your license key by email.
-            This key will allow you to activate CSS Eye on all your devices.
-        </p>
-    </div>
+    <div class="container">
+        <select class="currency-select" id="currency-select" title="Select currency">
+            <option value="EUR">EUR (€)</option>
+            <option value="USD">USD ($)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="AUD">AUD ($)</option>
+            <option value="CAD">CAD ($)</option>
+            <option value="JPY">JPY (¥)</option>
+            <option value="CNY">CNY (¥)</option>
+            <option value="INR">INR (₹)</option>
+            <option value="BRL">BRL (R$)</option>
+            <option value="MXN">MXN ($)</option>
+            <option value="SGD">SGD ($)</option>
+            <option value="NZD">NZD ($)</option>
+            <option value="CHF">CHF (Fr)</option>
+            <option value="HKD">HKD ($)</option>
+            <option value="SEK">SEK (kr)</option>
+            <option value="NOK">NOK (kr)</option>
+            <option value="DKK">DKK (kr)</option>
+            <option value="PLN">PLN (zł)</option>
+            <option value="RUB">RUB (₽)</option>
+            <option value="TRY">TRY (₺)</option>
+            <option value="ZAR">ZAR (R)</option>
+            <option value="AED">AED (د.إ)</option>
+            <option value="SAR">SAR (﷼)</option>
+        </select>
 
-    <div style="margin-top: 40px; padding: 20px; background: #fff3cd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-        <h3 style="color: #856404;">Money-back guarantee</h3>
-        <p>
-            If CSS Eye doesn't meet your expectations, we'll refund you in full within 30 days of your purchase.
-            No questions asked.
-        </p>
+        <div class="price" id="price">€9.00</div>
+        <div class="lifetime">Lifetime License</div>
+
+        <ul class="features">
+            <li>Visual CSS Editor</li>
+            <li>Multi-format Export</li>
+            <li>Performance Optimization</li>
+            <li>Lifetime Updates</li>
+            <li>Priority Support</li>
+        </ul>
+
+        <a href="https://checkout.stripe.com/c/pay/cs_live_VOTRE_ID" class="payment-button stripe-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe">
+        </a>
+
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=studiotravel20@gmail.com&currency_code=EUR&amount=9.00&item_name=CSS Eye Pro - Lifetime License&return=https://css-eye.github.io/success.html&cancel_return=https://css-eye.github.io/cancel.html&no_shipping=1&no_note=1" class="payment-button paypal-button">
+            Pay with PayPal
+        </a>
+
+        <div class="guarantee">30-Day Money Back Guarantee</div>
+        <div class="guarantee-text">If you're not satisfied with CSS Eye Pro, we'll refund your purchase. No questions asked.</div>
     </div>
 
     <script>
-        // Initialiser Stripe
-        const stripe = Stripe('pk_live_51RKFPRCVuyICKZ5QV51F7E1mIiB2GysBXKY8hzIzbaJ9RPIz7jgQz90FwBzactWhAQDO13lo0qNGM283tAT2Evbl00rSfyhCA5');
-        const checkoutButton = document.getElementById('checkout-button');
+        // Exchange rates configuration
+        const basePrice = 9.00;
+        const exchangeRates = {
+            EUR: 1,
+            USD: 1.08,
+            GBP: 0.86,
+            AUD: 1.65,
+            CAD: 1.47,
+            JPY: 160.45,
+            CNY: 7.82,
+            INR: 89.80,
+            BRL: 5.40,
+            MXN: 18.50,
+            SGD: 1.46,
+            NZD: 1.78,
+            CHF: 0.97,
+            HKD: 8.45,
+            SEK: 11.30,
+            NOK: 11.45,
+            DKK: 7.45,
+            PLN: 4.30,
+            RUB: 98.50,
+            TRY: 34.80,
+            ZAR: 20.50,
+            AED: 3.97,
+            SAR: 4.05
+        };
 
-        checkoutButton.addEventListener('click', function() {
-            stripe.redirectToCheckout({
-                lineItems: [{
-                    price: 'price_1RLLDcCVuyICKZ5QMHrD0XXR',
-                    quantity: 1
-                }],
-                mode: 'payment',
-                successUrl: 'https://zarlino.github.io/css-eye/thank-you.html',
-                cancelUrl: 'https://zarlino.github.io/css-eye/purchase.html'
-            });
-        });
+        // Update price based on currency
+        document.getElementById('currency-select').addEventListener('change', (e) => {
+            const currency = e.target.value;
+            const price = basePrice * exchangeRates[currency];
+            const symbol = currency === 'EUR' ? '€' : 
+                         currency === 'USD' ? '$' :
+                         currency === 'GBP' ? '£' :
+                         currency === 'JPY' ? '¥' :
+                         currency === 'CNY' ? '¥' :
+                         currency === 'INR' ? '₹' : '';
 
-        // Initialiser PayPal
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color:  'blue',
-                shape:  'rect',
-                label:  'pay'
-            },
-            fundingSource: paypal.FUNDING.PAYPAL,
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '9.00',
-                            currency_code: 'EUR'
-                        },
-                        description: 'CSS Eye License'
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(orderData) {
-                    window.location.href = 'https://zarlino.github.io/css-eye/thank-you.html';
-                });
+            let formattedPrice;
+            if (currency === 'JPY') {
+                formattedPrice = `${symbol}${Math.round(price)}`;
+            } else {
+                formattedPrice = `${symbol}${price.toFixed(2)}`;
             }
-        }).render('#paypal-button-container');
+
+            document.getElementById('price').textContent = formattedPrice;
+
+            // Update PayPal link with new currency and price
+            const paypalButton = document.querySelector('.paypal-button');
+            const basePaypalUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=studiotravel20@gmail.com';
+            const newPaypalUrl = `${basePaypalUrl}&currency_code=${currency}&amount=${price.toFixed(2)}&item_name=CSS Eye Pro - Lifetime License&return=https://css-eye.github.io/success.html&cancel_return=https://css-eye.github.io/cancel.html&no_shipping=1&no_note=1`;
+            paypalButton.href = newPaypalUrl;
+        });
     </script>
 </body>
 </html> 
