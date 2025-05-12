@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - CSS Eye Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="max-w-md w-full mx-auto p-8">
+            <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+                <div class="mb-8">
+                    <svg class="w-16 h-16 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold mb-4">Payment Successful!</h1>
+                <p class="text-gray-600 mb-8">Thank you for purchasing CSS Eye Pro. Your license key will be sent to your email shortly.</p>
+                <div class="space-y-4">
+                    <p class="text-sm text-gray-500">Order ID: <span id="orderId" class="font-mono"></span></p>
+                    <a href="chrome://extensions" class="block w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+                        Open Chrome Extensions
+                    </a>
+                    <a href="/" class="block text-blue-600 hover:text-blue-700">Return to Homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Affiche l'ID de commande depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('orderId');
+        if (orderId) {
+            document.getElementById('orderId').textContent = orderId;
+        }
+    </script>
+</body>
+</html> 
